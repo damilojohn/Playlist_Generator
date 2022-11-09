@@ -1,3 +1,4 @@
+#Importing the necesssary libraries
 from extract import create_dataframe
 from requests_html import HTMLSession
 import yaml
