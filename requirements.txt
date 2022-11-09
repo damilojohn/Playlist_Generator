@@ -2,3 +2,5 @@ transformers
 sentence-transformers
 gradio
 datasets
+spotify
+requests_html

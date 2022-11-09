@@ -1,0 +1,17 @@
+config_keys:
+  client_id: bf5a8e8e738746a39370ea64c87dfe4d
+  secret_id: 1112b33d483e440cb784174ee162aeab
+
+artist_id_config:
+  Wizkid: '3tVQdUvClmAT7URs9V3rsp'
+  Davido: '0Y3agQaa6g2r0YmHPOO9rh'
+  Boj: '4qYpTEJThZ8FC8KzyFrSWW'
+  Rema: '46pWGuE3dSwY3bMMXGBvVS'
+  Burna Boy: '3wcj11K77LjEY1PkEazffa'
+  Joeboy: '1XavfPKBpNjkOfxHINlMHF'
+  Omah lay: '5yOvAmpIR7hVxiS6Ls5DPO'
+  Tems: '687cZJR45JO7jhk1LHIbgq'
+  Ladipoe: '379IT6Szv0zgnw4xrdu4mu'
+  Simi: '4Ns55iOSe1Im2WU2e1Eym0'
+
+lyric_xpath: div.Lyrics__Container-sc-1ynbvzw-6
