@@ -36,3 +36,13 @@ def transform(df):
     df['for_lyrics']=df['for_lyrics'].apply(get_from_genius)
     df=df[['id','album','artist','song_name','image','url','for_lyrics']]
     return df
+
+#This saves the transformed dataframe as a csv
+def save_to_csv(df):
+    return df.to_csv('spotify_transformed.csv')
+
+#This builds a large text embedding necessary for the machine learning training
+def melt_lyrics_to_textfile(df):
+    text=str(df['for_lyrics'].tolist())
+    with open('model_embedding.txt','a') as r:
+        r.write(text)
