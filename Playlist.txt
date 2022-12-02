@@ -1,0 +1,6 @@
+Verses of songs, artist name, song_id, artist_id, lyrics, cover_image
+
+PIPELINE
+Afro beat songs from 2018 to 2022
+
+Pyspark --> Get the requests --> Store in s3 bucket --> Playlist
