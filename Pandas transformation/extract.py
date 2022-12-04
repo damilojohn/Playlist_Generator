@@ -2,7 +2,7 @@ import pandas as pd
 import spotipy
 import yaml
 from spotipy.oauth2 import SpotifyClientCredentials
-file_name='config.yaml'
+file_name='./config.yaml'
 
 #This authenticates the user and grants access to the Spotify's api.
 def authenticate_user(path):

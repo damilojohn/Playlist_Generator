@@ -11,7 +11,7 @@ def start_session():
 def get_from_genius(url):
     session=start_session()
     get_raw=session.get(url)
-    with open('config.yaml','r') as get_xpath:
+    with open('./config.yaml','r') as get_xpath:
         lyrics_xpath=yaml.safe_load(get_xpath)['lyric_xpath']
     get_lyrics=get_raw.html.find(lyrics_xpath)
     if get_lyrics==[]:
@@ -46,3 +46,4 @@ def melt_lyrics_to_textfile(df):
     text=str(df['for_lyrics'].tolist())
     with open('model_embedding.txt','a') as r:
         r.write(text)
+
