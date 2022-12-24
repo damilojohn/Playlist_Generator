@@ -21,6 +21,7 @@ def create_dataframe():
     df=pd.DataFrame(columns=['id','album','artist','song_name','image','url','lyrics'])
     idd=[]
     album=[]
+    song_id=[]
     artist_list=[]
     song_name=[]
     image=[]
@@ -29,6 +30,7 @@ def create_dataframe():
         for k in authenticate_user(file_name).artist_top_tracks(i[1])['tracks']:
             idd.append(i[1])
             album.append(k['album']['name'])
+            song_id.append(k['id'])
             artist_list.append(i[0])
             song_name.append(k['name'])
             url.append(k['external_urls']['spotify'])
@@ -38,6 +40,7 @@ def create_dataframe():
     df['album']=pd.Series(album)
     df['artist']=pd.Series(artist_list)
     df['song_name']=pd.Series(song_name)
+    df['song_id']=pd.Series(song_id)
     df['image']=pd.Series(image)
     df['url']=pd.Series(url)
     df['lyrics']=''

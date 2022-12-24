@@ -30,6 +30,8 @@ def create_dataframe():
  
     columns = StructType([StructField('id',
                                     StringType(), True),
+                        StructField('song_id',
+                                    StringType(), True),
                         StructField('album',
                                     StringType(), True),
                         StructField('artist',
@@ -46,6 +48,7 @@ def create_dataframe():
     with open(file_name,'r') as read_artist_config:
         artist_config=yaml.safe_load(read_artist_config)['artist_id_config']
     idd=[]
+    song_id=[]
     album=[]
     artist_list=[]
     song_name=[]
@@ -54,6 +57,7 @@ def create_dataframe():
     for i in artist_config.items():
         for k in authenticate_user(file_name).artist_top_tracks(i[1])['tracks']:
             idd.append(i[1])
+            song_id.append(k['id'])
             album.append(k['album']['name'])
             artist_list.append(i[0])
             song_name.append(k['name'])
@@ -61,7 +65,7 @@ def create_dataframe():
             for l in k['album']['images']:
                 image.append(l['url'])
     image=image[::3]
-    rows=[idd,album,artist_list,song_name,image,url]
+    rows=[idd,album,artist_list,song_id,song_name,image,url]
     rows_mod=np.ravel(rows)
     emp=[]
     for j in range(100):
@@ -69,11 +73,11 @@ def create_dataframe():
             emp.append(i[j])
     new_emp=[]
     start=0
-    end=6
+    end=7
     while end<601:
         new_emp.append(emp[start:end])
-        start+=6
-        end+=6
+        start+=7
+        end+=7
     main_df=spark().createDataFrame(data=new_emp,schema=columns)
     return main_df
 
