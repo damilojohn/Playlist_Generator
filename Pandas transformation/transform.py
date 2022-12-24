@@ -34,7 +34,7 @@ def transform(df):
 
     df=df.drop([2,3])
     df['for_lyrics']=df['for_lyrics'].apply(get_from_genius)
-    df=df[['id','album','artist','song_name','image','url','for_lyrics']]
+    df=df[['id','album','artist','song_id','song_name','image','url','for_lyrics']]
     return df
 
 #This saves the transformed dataframe as a csv
@@ -47,3 +47,4 @@ def melt_lyrics_to_textfile(df):
     with open('model_embedding.txt','a') as r:
         r.write(text)
 
+save_to_csv(transform(create_dataframe()))
