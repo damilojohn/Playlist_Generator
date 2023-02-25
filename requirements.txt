@@ -1,6 +1,8 @@
 transformers 
 sentence-transformers
 gradio
+pandas 
+huggingface_hub
 datasets
 spotify
 requests_html
