@@ -12,7 +12,7 @@ songs_df = pd.read_csv(hf_hub_download('damilojohn/Personal_Playlist_Generator',
 mappings = pd.read_csv(hf_hub_download('damilojohn/Personal_Playlist_Generator',repo_type='dataset',filename ='song_mappings.csv'))
 verses_df = pd.read_csv(hf_hub_download('damilojohn/Personal_Playlist_Generator',repo_type='dataset',filename = 'verses.csv'))
 song_embeddings = pickle.load(open(hf_hub_download('damilojohn/Personal_Playlist_Generator',repo_type='dataset',filename ='embeddings.pkl'),'rb'))
-embedder = SentenceTransformer('msmarco-distilbert-base-v4')
+model = SentenceTransformer('msmarco-distilbert-base-v4')
 verses_df.rename(columns={'0':'verse'},inplace=True)
 mappings.rename(columns={'Unnamed: 0':'verse','0':'song_name'},inplace=True)
 
