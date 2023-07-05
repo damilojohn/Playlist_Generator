@@ -18,7 +18,7 @@ mappings.rename(columns={'Unnamed: 0':'verse','0':'song_name'},inplace=True)
 
 
 def generate_playlist(prompt):
-  prompt_embed = embedder.encode(prompt)
+  prompt_embed = model.encode(prompt)
   hits = util.semantic_search(prompt_embed,song_embeddings,top_k=30)
   hits = pd.DataFrame.from_dict(hits[0])
   verses_match = verses_df.iloc[hits['corpus_id']]
