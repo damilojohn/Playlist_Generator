@@ -12,13 +12,13 @@ songs_df = pd.read_csv(hf_hub_download('damilojohn/Personal_Playlist_Generator',
 mappings = pd.read_csv(hf_hub_download('damilojohn/Personal_Playlist_Generator',repo_type='dataset',filename ='song_mappings.csv'))
 verses_df = pd.read_csv(hf_hub_download('damilojohn/Personal_Playlist_Generator',repo_type='dataset',filename = 'verses.csv'))
 song_embeddings = pickle.load(open(hf_hub_download('damilojohn/Personal_Playlist_Generator',repo_type='dataset',filename ='embeddings.pkl'),'rb'))
-model = SentenceTransformer('msmarco-distilbert-base-v4')
+sentence_transformer = SentenceTransformer('msmarco-distilbert-base-v4')
 verses_df.rename(columns={'0':'verse'},inplace=True)
 mappings.rename(columns={'Unnamed: 0':'verse','0':'song_name'},inplace=True)
 
 
 def generate_playlist(prompt):
-  prompt_embed = model.encode(prompt)
+  prompt_embed = sentence_transformer.encode(prompt)
   hits = util.semantic_search(prompt_embed,song_embeddings,top_k=30)
   hits = pd.DataFrame.from_dict(hits[0])
   verses_match = verses_df.iloc[hits['corpus_id']]
