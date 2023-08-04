@@ -7,7 +7,7 @@ RUN pip install -r requirements.txt
 
 #copy useful files and directories for our build 
 COPY src/app.py app.py 
-COPY aws/api.py api.py 
+COPY serverless/api.py api.py 
 
 CMD ["api.handler"]
 

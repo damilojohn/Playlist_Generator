@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "../../BytePairEncoding"
+        },
+        {
+            "path": "../../fsdl-text-recognizer-2022-labs"
+        },
+        {
+            "path": ".."
+        },
+        {
+            "path": "../../mnist_classifier"
+        },
+        {
+            "path": "../../Neo_expressionism_bot"
+        }
+    ]
+}
