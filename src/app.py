@@ -7,12 +7,14 @@ from huggingface_hub import hf_hub_download
 
 pd.options.mode.chained_assignment = None  # Turn off SettingWithCopyWarning
 
+
 songs_df = pd.read_csv(
   hf_hub_download('damilojohn/Personal_Playlist_Generator',
                   repo_type='dataset',
                   filename='spotify_transformed.csv'))
 mappings = pd.read_csv(
-  hf_hub_download('damilojohn/Personal_Playlist_Generator', repo_type='dataset',
+  hf_hub_download('damilojohn/Personal_Playlist_Generator', 
+                  repo_type='dataset',
                   filename='song_mappings.csv'))
 verses_df = pd.read_csv(
   hf_hub_download('damilojohn/Personal_Playlist_Generator',
@@ -69,7 +71,7 @@ with demo:
             Enter a Prompt to generate a playlist based on that prompt 
             '''
         )
-        song_prompt = gr.TextArea(
+        song_prompt=gr.TextArea(
             value='I need igbo and shayo',
             placeholder = "Enter a sentence that describes how you're feeling or what you want your playlist to be about"
         )
@@ -81,16 +83,16 @@ with demo:
                 ['nobody gets me ']
             ]
         )
-      with gr.Column():
-        fetch_songs = gr.Button(value='generate your playlist',).style(full_width=True)
+        with gr.Column():
+          fetch_songs = gr.Button(value='generate your playlist',).style(full_width=True)
         with gr.Row():
                   tile1 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
                   tile2 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
                   tile3 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
         with gr.Row():
-                tile4 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
-                tile5 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
-                tile6 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
+          tile4=gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
+          tile5=gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
+          tile6=gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
         with gr.Row():
                 tile7 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
                 tile8 = gr.Image(value="https://i.imgur.com/bgCDfT1.jpg", show_label=False, visible=True)
@@ -100,21 +102,18 @@ with demo:
         tiles = [tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9]
 
         with gr.Row():
-          song_options = gr.Radio(label='songs',interactive=True,choices=None,type='value')
-      with gr.Column():
-        lyrics = gr.Textbox(label='lyrics',placeholder="select a song to see it's lyrics")
+            song_options = gr.Radio(label='songs', interactive= True, choices= None, type='value')
+        with gr.Column():
+            lyrics = gr.Textbox(label='lyrics', placeholder="select a song to see it's lyrics")
 
-    
-      fetch_songs.click(
-          fn=generate_playlist,
-          inputs=[song_prompt],
-          outputs=[song_options,*tiles]
-      )
-      example_prompts.click(
-          fn=set_example_prompt,
-          inputs = [example_prompts],
-          outputs = example_prompts.components
-      )
-    
-
-    demo.launch(debug=True,share=True)
+        fetch_songs.click(
+            fn=generate_playlist,
+            inputs=[song_prompt],
+            outputs=[song_options, *tiles]
+        )
+        example_prompts.click(
+            fn=set_example_prompt,
+            inputs=[example_prompts],
+            outputs=example_prompts.components
+        )
+demo.launch(debug=True, share=True)

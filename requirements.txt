@@ -1,4 +1,3 @@
-transformers 
 sentence-transformers
 gradio
 pandas 
