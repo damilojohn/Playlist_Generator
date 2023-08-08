@@ -1,8 +1,8 @@
 FROM public.ecr.aws/lambda/python:3.10
 
-WORKDIR /mnt/c/users/user/Playlist_Generator/
-COPY /requirements.txt ./requirements.txt 
-COPY /sentence_transformer/ ./sentence_transformer 
+
+COPY requirements.txt ./requirements.txt 
+COPY sentence_transformer/ ./sentence_transformer 
 
 #install dependencies in requirements.txt 
 RUN pip install -r requirements.txt 
