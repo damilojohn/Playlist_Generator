@@ -9,8 +9,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-bucket = ''
-key = ''
+bucket = 'playlistgenerator'
+key = 'embeddings (1).pkl'
 
 
 def GetEmbeddingsFromS3():
@@ -38,7 +38,7 @@ def handler(event, _context):
     song_embeddings = GetEmbeddingsFromS3()
     logger.info('embeddings downloaded.....')
     logger.info('starting inference....')
-    prompt_embed = model.predict(prompt)
+    prompt_embed = model.generate_embeds(prompt)
     logger.info('embeddings generated....')
     logger.info('performing semantic search ...')
     hits = model.generate_playlist(prompt_embed, song_embeddings)

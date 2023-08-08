@@ -1,12 +1,15 @@
 from sentence_transformers import SentenceTransformer, util
 import argparse
-import wandb 
 
+'''
+api = wandb.Api()
 
 with wandb.init(project="Text Descrambling") as run:
 
-    # Connect an Artifact to the run
-    model_name = run.use_artifact('damilojohn/Playlist Generator/Playlist-Generator-Sentence-Transformer:v0',
+  # Connect an Artifact to the run
+    model_name = run.use_artifact
+    ('damilojohn/Playlist Generator
+    /Playlist-Generator-Sentence-Transformer:v0',
                                   type='model')
     model_artifact = run.use_artifact(model_name)
 
@@ -17,12 +20,14 @@ with wandb.init(project="Text Descrambling") as run:
     #  using the same model class
     model = SentenceTransformer(
         model_dir, )
+        '''
+model_path = './model'
 
 
 class PlaylistGenerator:
     '''Loads Sentence Transformer and Generates Embeddings of input_text'''
     def __init__(self,):
-        self.model = model 
+        self.model = SentenceTransformer(model_path)
 
     def generate_embeds(self, text):
         self.embed = self.model.encode(text)
@@ -42,7 +47,7 @@ def main():
     )
     args = parser.parse_args()
     embedder = PlaylistGenerator()
-    embed = embedder.predict(args.input_text)
+    embed = embedder.generate_embeds(args.input_text)
     print(embed)
 
 
