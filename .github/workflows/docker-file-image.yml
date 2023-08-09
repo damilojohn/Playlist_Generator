@@ -1,21 +1,32 @@
-name: Build Dockerfile 
+name: 'Build Dockerfile'
 
 on:
-    push:
-        branches: ['main']
-    pull_request:
-        branches: ['main'] 
+  push:
+    branches: [ "main" ]
+
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
 
-    build:
-        runs-on : ubuntu-latest 
-        strategy: 
-            fail-fast : false
-        steps:
-            - uses : actions/checkout@v3 
-            - name: Build Dockerfile 
-             run: |
-                 docker build . --file docker/Dockerfile
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
 
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
 
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build dockerfile
+      run: docker build -t playlist_gen_build .
