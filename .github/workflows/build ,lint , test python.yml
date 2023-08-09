@@ -5,9 +5,9 @@ name: build,lint,test
 
 on:
   push:
-    branches: ['main']
+    branches: ['empty']
   pull_request: 
-    branches: ['main']
+    branches: ['empty']
 
 jobs:
    build :
