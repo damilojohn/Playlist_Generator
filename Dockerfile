@@ -1,5 +1,4 @@
 FROM public.ecr.aws/lambda/python:3.10
-RUN  apt-get update
 RUN mkdir -p opt/playlist_gen
 WORKDIR /opt/playlist_gen
 COPY requirements.txt .
