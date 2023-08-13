@@ -4,6 +4,7 @@ WORKDIR /opt/playlist_gen
 COPY requirements.txt .
 COPY /sentence_transformer/. ./sentence_transformer 
 COPY /lambda/. ./lambda
+RUN pwd
 #install dependencies in requirements.txt 
 RUN pip install -r requirements.txt 
 EXPOSE 5000
