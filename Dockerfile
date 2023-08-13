@@ -4,7 +4,7 @@ WORKDIR /opt/playlist_gen
 COPY requirements.txt .
 COPY /sentence_transformer/. ./sentence_transformer 
 COPY /lambda/. ./lambda
-RUN cd lambda
+WORKDIR /opt/playlist_gen/lambda
 RUN pwd
 RUN ls
 #install dependencies in requirements.txt 
