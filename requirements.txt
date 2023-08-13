@@ -3,3 +3,4 @@ spotify
 requests_html
 boto3
 datasets
+torch==1.9.0+cpu 
