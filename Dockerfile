@@ -1,9 +1,9 @@
 FROM public.ecr.aws/lambda/python:3.10
 RUN mkdir -p /opt/playlist_gen
 WORKDIR /opt/playlist_gen
-COPY requirements.txt ./lambda
 COPY /sentence_transformer/. ./sentence_transformer 
 COPY /lambda/. ./lambda
+COPY requirements.txt ./lambda
 WORKDIR /opt/playlist_gen/lambda
 RUN pwd
 RUN ls
