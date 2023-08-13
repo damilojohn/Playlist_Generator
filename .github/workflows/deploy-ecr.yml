@@ -10,8 +10,8 @@ permissions:
   id-token: write
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  playlist_gen:
+    name: 'Playlist Generator'
     runs-on: ubuntu-latest
     environment: production
 
