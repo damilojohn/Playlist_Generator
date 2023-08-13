@@ -1,7 +1,10 @@
 FROM public.ecr.aws/lambda/python:3.10
 #install dependencies in requirements.txt 
-RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
-COPY /lambda/. "${LAMBDA_TASK_ROOT}"
+WORKDIR "${LAMBDA_TASK_ROOT}"
+RUN pip install -r requirements.txt .
+COPY /lambda/. .
+RUN pwd
+RUN ls
 EXPOSE 5000
 CMD ["lambda_handler.handler"]
 
