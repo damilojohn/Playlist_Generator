@@ -4,5 +4,4 @@ requests_html
 boto3
 datasets
 # torch --extra-index-url https://download.pytorch.org/whl/cpu
-https://download.pytorch.org/whl/cpu/torch-1.11.0%2Bcpu-cp39-cp39-linux_x86_64.whl
-loguru==0.6.0
+torchloguru==0.6.0
