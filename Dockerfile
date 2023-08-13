@@ -5,7 +5,7 @@ COPY requirements.txt .
 COPY /lambda/. .
 RUN pwd
 RUN ls
-RUN pip install -r requirements.txt .
+RUN pip install -r requirements.txt 
 EXPOSE 5000
 CMD ["lambda_handler.handler"]
 
