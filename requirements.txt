@@ -2,3 +2,4 @@ sentence-transformers
 spotify
 requests_html
 boto3
+datasets
