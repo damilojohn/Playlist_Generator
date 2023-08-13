@@ -4,4 +4,5 @@ requests_html
 boto3
 datasets
 # torch --extra-index-url https://download.pytorch.org/whl/cpu
-torchloguru==0.6.0
+torch
+loguru
