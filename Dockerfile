@@ -7,5 +7,5 @@ COPY lambda/. .
 #install dependencies in requirements.txt 
 RUN pip install -r requirements.txt 
 EXPOSE 5000
-CMD ["lambda/lambda_handler.handler"]
+CMD ["lambda_handler.handler"]
 
