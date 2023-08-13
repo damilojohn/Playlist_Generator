@@ -6,7 +6,6 @@ COPY /sentence_transformer/. ./sentence_transformer
 COPY /lambda/. ./lambda
 #install dependencies in requirements.txt 
 RUN pip install -r requirements.txt 
-WORKDIR /opt/playlist_gen/lambda
 EXPOSE 5000
-CMD ["lambda_handler.handler"]
+CMD ["lambda/lambda_handler.handler"]
 
