@@ -1,14 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.10
-RUN mkdir -p /opt/playlist_gen
-WORKDIR /opt/playlist_gen
-COPY /sentence_transformer/. ./sentence_transformer 
-COPY /lambda/. ./lambda
-COPY requirements.txt ./lambda
-WORKDIR /opt/playlist_gen/lambda
-RUN pwd
-RUN ls
 #install dependencies in requirements.txt 
-RUN pip install -r requirements.txt 
+RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+COPY /lambda/. "${LAMBDA_TASK_ROOT}"
 EXPOSE 5000
 CMD ["lambda_handler.handler"]
 
