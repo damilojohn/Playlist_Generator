@@ -6,31 +6,17 @@ import wandb
 os.environ['WANDB_API_KEY'] = '6078e9b1aed535c27c3f1179d4bcc048d3d95a66'
 
 
-api = wandb.Api()
-
-with wandb.init(project="Playlist-Generator- Sentence-Transformer",
-                job_type="stage") as run:
-
-    # Connect an Artifact to the run
-    model_name = run.use_artifact(
-        'damilojohn/Playlist Generator/Playlist-Generator-Sentence-Transformer:v0',
-        type='model')
-    model_artifact = run.use_artifact(model_name)
-
-    # Download model weights to a folder and return the path
-    model_dir = model_artifact.download()
-
-    # Load your Hugging Face model from that folder
-    #  using the same model class
-    model = SentenceTransformer(
-        model_dir, )
+run = wandb.init()
+artifact = run.use_artifact('damilojohn/Playlist Generator/Playlist-Generator-Sentence-Transformer:v0', type='model')
+model_dir = artifact.download()
+# Load your Hugging Face model from that folder
+#  using the same model class
 
 
 class PlaylistGenerator:
     '''Loads Sentence Transformer and Generates Embeddings of input_text'''
     def __init__(self,):
-        self.model = SentenceTransformer(model_path,device="cpu")
-
+        self.model = SentenceTransformer(model_dir, device="cpu")
     def generate_embeds(self, text):
         self.embed = self.model.encode(text)
         return self.embed
