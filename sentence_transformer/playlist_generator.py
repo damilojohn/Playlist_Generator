@@ -8,11 +8,12 @@ os.environ['WANDB_API_KEY'] = '6078e9b1aed535c27c3f1179d4bcc048d3d95a66'
 
 api = wandb.Api()
 
-with wandb.init(project="Playlist-Generator-Sentence-Transformer",job_type="stage") as run:
+with wandb.init(project="Playlist-Generator- Sentence-Transformer",
+                job_type="stage") as run:
 
     # Connect an Artifact to the run
     model_name = run.use_artifact(
-        'damilojohn/Playlist Generator/Playlist-Generator-Sentence-Transformer:v0', 
+        'damilojohn/Playlist Generator/Playlist-Generator-Sentence-Transformer:v0',
         type='model')
     model_artifact = run.use_artifact(model_name)
 
