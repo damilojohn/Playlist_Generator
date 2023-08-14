@@ -12,5 +12,5 @@ COPY lambda_handler.py ./handler.py
 
 EXPOSE 5000
 
-CMD ["lambda_handler.handler"]
+CMD ["handler.handler"]
 
