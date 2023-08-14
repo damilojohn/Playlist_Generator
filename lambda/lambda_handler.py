@@ -3,7 +3,7 @@ import json
 import logging
 import pickle
 from io import BytesIO
-from sentence_transformer.playlist_generator import PlaylistGenerator
+from playlist_generator import PlaylistGenerator
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)

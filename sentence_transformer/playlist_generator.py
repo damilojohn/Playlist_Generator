@@ -28,8 +28,7 @@ with wandb.init(project="Playlist-Generator-Sentence-Transformer",job_type="stag
 class PlaylistGenerator:
     '''Loads Sentence Transformer and Generates Embeddings of input_text'''
     def __init__(self,):
-        self.model_path = model_dir
-        self.model = SentenceTransformer(self.model_path)
+        self.model = SentenceTransformer(model_path,device="cpu")
 
     def generate_embeds(self, text):
         self.embed = self.model.encode(text)
