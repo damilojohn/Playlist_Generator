@@ -5,6 +5,7 @@ COPY requirements.txt .
 COPY /lambda/. .
 COPY /sentence_transformer/. .
 RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
+RUN git lfs install
 RUN pip install -r requirements.txt 
 RUN mkdir -p playlist_gen_cache/cache
 ENV TRANSFORMERS_CACHE=/playlist_gen_cache/cache/
