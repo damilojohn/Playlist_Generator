@@ -27,7 +27,7 @@ model_path = './model'
 class PlaylistGenerator:
     '''Loads Sentence Transformer and Generates Embeddings of input_text'''
     def __init__(self,):
-        self.model = SentenceTransformer(model_path)
+        self.model = SentenceTransformer(model_path,device="cpu")
 
     def generate_embeds(self, text):
         self.embed = self.model.encode(text)
