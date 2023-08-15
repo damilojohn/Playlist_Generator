@@ -7,3 +7,4 @@ datasets
 torch
 loguru
 huggingface-hub
+wandb
