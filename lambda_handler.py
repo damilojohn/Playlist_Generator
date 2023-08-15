@@ -31,7 +31,7 @@ logger.info('model loaded from file....')
 
 def handler(event, _context):
     """main model prediction api"""
-    data = json.loads(event['body'])
+    data = json.loads(event)
     prompt = data.get('prompt')
     if event is None:
         return {'statusCode': 400, 'message': 'no input prompt was provided'}
