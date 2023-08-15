@@ -38,7 +38,7 @@ jobs:
     - name: Deploy to ECR
       run: |
         aws ecr get-login-password --region eu-west-2  | docker login --username AWS --password-stdin $ECR_REPO_URI 
-        aws ecr describe-repositories --repository-names ${ECR_REPO_NAME} 
+        aws ecr describe-repositories --repository-names ${ECR_REPO_NAME} || aws ecr create-repository --repository-name ${ECR_REPO_NAME} 
         docker build -t $ECR_REPO_NAME . --platform=linux/amd64
         docker tag $ECR_REPO_NAME:latest $ECR_REPO_URI/$ECR_REPO_NAME:latest
         
