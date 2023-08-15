@@ -10,7 +10,7 @@ import os
 class PlaylistGenerator:
     '''Loads Sentence Transformer and Generates Embeddings of input_text'''
     def __init__(self,):
-        self.model = SentenceTransformer('msmarco-distilbert-base-v4', device="cpu",cache_folder="../../../tmp")
+        self.model = SentenceTransformer('msmarco-distilbert-base-v4', device="cpu",)
 
     def generate_embeds(self, text):
         self.embed = self.model.encode(text)
