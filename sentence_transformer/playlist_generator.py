@@ -8,7 +8,7 @@ os.environ['WANDB_API_KEY'] = '6078e9b1aed535c27c3f1179d4bcc048d3d95a66'
 
 run = wandb.init()
 artifact = run.use_artifact('damilojohn/Playlist Generator/Playlist-Generator-Sentence-Transformer:v0', type='model')
-model_dir = artifact.download()
+model_dir = artifact.download(root = "../../../tmp")
 # Load your Hugging Face model from that folder
 #  using the same model class
 
