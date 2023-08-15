@@ -15,7 +15,7 @@ key = 'embeddings (1).pkl'
 
 def GetEmbeddingsFromS3():
     s3 = boto3.resource('s3')
-    with BytesIO as f:
+    with BytesIO() as f:
         s3.Bucket(bucket).download_fileobj(key, f)
         f.seek(0)
         embeds = pickle.load(f)
