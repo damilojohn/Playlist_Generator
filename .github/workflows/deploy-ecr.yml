@@ -37,7 +37,7 @@ jobs:
 
     - name: Deploy to ECR
       run: |
-        aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $ECR_REPO_URI 
+        aws ecr get-login-password --region eu-west-2 --profile dami | docker login --username AWS --password-stdin $ECR_REPO_URI 
         docker build -t $ECR_REPO_NAME . --platform=linux/amd64
         docker tag $ECR_REPO_NAME:latest $ECR_REPO_URI/$ECR_REPO_NAME:latest
         docker push $ECR_REPO_URI/$ECR_REPO_NAME:latest
