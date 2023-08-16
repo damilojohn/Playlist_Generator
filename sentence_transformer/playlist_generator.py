@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer, util
 import argparse
-import os
 
 
 # Load your Hugging Face model from that folder
@@ -10,7 +9,8 @@ import os
 class PlaylistGenerator:
     '''Loads Sentence Transformer and Generates Embeddings of input_text'''
     def __init__(self,):
-        self.model = SentenceTransformer('msmarco-distilbert-base-v4', device="cpu",)
+        self.model = SentenceTransformer('msmarco-distilbert-base-v4',
+                                         device="cpu",)
 
     def generate_embeds(self, text):
         self.embed = self.model.encode(text)
@@ -31,6 +31,7 @@ def main():
     args = parser.parse_args()
     embedder = PlaylistGenerator()
     embed = embedder.generate_embeds(args.input_text)
+    embed = embed.to_list()
     print(embed)
 
 

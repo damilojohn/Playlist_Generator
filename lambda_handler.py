@@ -10,12 +10,12 @@ logger.setLevel(logging.INFO)
 
 bucket = 'playlistgenerator'
 key = 'embeddings (1).pkl'
-S3_BUCKET_NAME = 'your-s3-bucket'
+S3_BUCKET_NAME = bucket
 
 
 def GetEmbeddingsFromS3():
     s3 = boto3.resource('s3')
-    with BytesIO as f:
+    with BytesIO() as f:
         s3.Bucket(S3_BUCKET_NAME).download_fileobj(key, f)
         f.seek(0)
         embeds = pickle.load(f)
@@ -42,7 +42,7 @@ def handler(event, _context):
     prompt_embed = model.generate_embeds(prompt)
     logger.info('embeddings generated....')
     logger.info('performing semantic search ...')
-    hits = model.generate_playlist(prompt_embed, song_embeddings)
+    hits = model.generate_playlist(song_embeddings)
     return {
         "body": json.dumps({"embeddings": prompt_embed,
                             "hits": hits}),

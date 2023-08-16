@@ -31,8 +31,7 @@ logger.info('model loaded from file....')
 
 def handler(event, _context):
     """main model prediction api"""
-    data = event['body']
-    prompt = data['prompt']
+    prompt = event['queryStringParameters']['prompt']
     if prompt is None:
         return {'statusCode': 400, 'message': 'no input prompt was provided'}
     logger.info('downloading embeddings from s3....')
