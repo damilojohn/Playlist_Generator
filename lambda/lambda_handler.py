@@ -43,6 +43,7 @@ def handler(event, _context):
     logger.info('embeddings generated....')
     logger.info('performing semantic search ...')
     hits = model.generate_playlist(song_embeddings)
+    prompt_embed = prompt_embed.tolist()
     return {
         "body": json.dumps({"embeddings": prompt_embed,
                             "hits": hits}),
