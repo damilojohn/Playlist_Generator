@@ -38,12 +38,12 @@ jobs:
     - name: Deploy to ECR
       run: |
         aws ecr get-login-password --region eu-west-2  | docker login --username AWS --password-stdin $ECR_REPO_URI 
-        docker build -t $ECR_REPO_NAME . --platform=linux/amd64
+        docker build -t playlist_gen_repo . --platform=linux/amd64
         docker tag playlist_gen_repo:latest $ECR_REPO_URI/$ECR_REPO_NAME:latest
         
         docker push $ECR_REPO_URI/$ECR_REPO_NAME:latest
       env:
         ECR_REPO_NAME : ${{ secrets.ECR_REPO_NAME }} 
-        ECR_REPO_URI : ${{ secrets.REPO_URI }} 
+        ECR_REPO_URI : ${{ secrets.ECR_REPO_URI }} 
           
       
